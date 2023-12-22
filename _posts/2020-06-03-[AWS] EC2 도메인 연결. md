@@ -1,1 +1,29 @@
-_posts/2020-11-21-[AWS] CodeDeploy Agent 설치.md
+---
+title: EC2 도메인 연결
+author: chhak
+date: 2020-06-03 00:00:00 +0800
+categories: [AWS]
+tags: [AWS]
+---
+
+1. Route 53 콘솔로 들어가 [Hosted zones] -> [Create Hosted Zone]을 클릭
+
+2. Domain Name에 이전에 발급받은 도메인을 기입,  [Create]를 클릭
+
+3. NS 타입과 SOA 타입의 레코드 셋이 생성 확인. NS는 네임 서버 레코드, SOA는 권한 시작 레코드  [Create Record Set]을 클릭
+- Name: 서브 도메인 네임 입력. Root 도메인을 사용할 경우 비워둠
+- Type: A레코드를 선택하기 위해 ‘A – IPv4 address’ 선택
+- Alias: ‘No’ 선택
+- TTL: 도메인 이름의 caching 시간 설정. 기본 값 사용
+- Value: 여기에 Elastic IP(고정 IP) 입력
+
+앞서 설정은 root 도메인 chhak.co.kr 에 대한 것이라서, www.chhak.co.kr 경우 접속이 되지 않음.
+www 추가 시 접속되도록 설정하는 방법
+
+Route 53 화면에서 [Create Record Set] 클릭
+ㆍName : 이번에는 서브도메인명으로 ‘www’ 입력
+ㆍType : ‘CNAME – Canonical name’을 선택
+ㆍValue : 이번에는 IP가 아니라 A레코드에 사용한 루트 도메인 이름을 입력
+
+[Create] 클릭
+
