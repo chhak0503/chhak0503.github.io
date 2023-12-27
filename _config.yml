@@ -19,7 +19,7 @@ timezone: Asia/Seoul
 
 title: 개발에 반하다 # the main title
 
-tagline: fall in love with dev # it will display as the sub-title
+tagline: 김철학의 기술노트 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
